@@ -4,13 +4,16 @@ import win32ui
 #目标文件
 tar_file="target.txt"
 
-start = 0
-end = 0
 #创建打开文件对话框
 dlg = win32ui.CreateFileDialog(1)
 dlg.SetOFNInitialDir('')
 dlg.DoModal()
 filename = dlg.GetPathName()
+
+if len(filename) ==0:
+        print "file's name is ivilid"
+        exit()
+
 #打开源文件
 print "Open file:%s" %(filename)
 try:
