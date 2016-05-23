@@ -26,8 +26,7 @@ with open(filename,"r+") as f:
                 print line[-1],line[-2]
                 if cmp(line[-1],line[-2]) != 0:
                         error = error +1
-                else:
-                        all =all +1
+                all =all +1
                         
 print "The result is:in %d item,%d error,the error rate is:%f" %(all,error,error / all)
 
