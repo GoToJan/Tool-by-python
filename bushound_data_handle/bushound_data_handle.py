@@ -33,14 +33,33 @@ while 1:
 		break
 #print "start and end is:%d,%d" %(start,end)
 target = ""
+flag = 0
+temp = ""
 while 1:
 	str = source.readline()
+	
 	if len(str)==0:
 #		print "break"
 		break
-	temp = str[start:end]
-	target = target +temp + "\n"
-#print target
+
+	if str.find("  OUT") != -1:
+                if len(temp) !=0:
+                        target = target +temp + "\n" + "\n"
+                
+                temp = "OUT:"+"\n"
+                temp = temp + str[start:end]
+                
+        elif str.find("  IN") != -1:
+                if len(temp) !=0:
+                        target = target +temp + "\n" + "\n"
+
+                temp = "IN:"+"\n"
+                temp = temp + str[start:end]
+                
+        else:
+                temp = temp + "\n" + str[start:end]
+
+
 print "write file"
 print len(target)
 if len(target) !=0:
